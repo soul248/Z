@@ -3,14 +3,21 @@ package
     import flash.display.Sprite;
     import flash.events.Event;
     import entities.Player;
-    //import menus.MainMenu;
+    import menus.MainMenu;
+    import com.hexagonstar.util.debug.Debug;
+    
     
     public class Main extends Sprite
     {
-        //var mainMenu:MainMenu;
+        private var mainMenu:MainMenu;
         
         public function Main()
         {
+            width = 1024;
+            height = 768;
+            
+            Debug.trace('yeahhh!');
+            
             if(stage) init();
             else this.addEventListener(Event.ADDED_TO_STAGE, init);
         }
@@ -18,9 +25,8 @@ package
         public function init(event:Event = null):void
         {
             //Entry point for app, start the gui
-            //mainMenu = new MainMenu();
-            //mainMenu.init();
-            //this.addChild(mainMenu);
+            mainMenu = new MainMenu();
+            stage.addChild(mainMenu);
                         
             //Start managers
             
