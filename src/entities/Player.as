@@ -6,7 +6,7 @@ package entities
     import flash.events.KeyboardEvent;
     import flash.geom.Point;
     import flash.events.Event;
-    
+
     import com.hexagonstar.util.debug.Debug;
     
     public class Player extends Sprite
