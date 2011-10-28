@@ -7,13 +7,15 @@ package entities
     import flash.geom.Point;
     import flash.events.Event;
     
+    import com.hexagonstar.util.debug.Debug;
+    
     public class Player extends Sprite
     {
         private var asset:MovieClip;
         private var id:String;
         
         //Movement variables
-        private var speed:int;
+        private var speed:int = 10;
         private var movementKeys:Array = new Array(119, 97, 115, 100); //A = 97, S = 115, D = 100, W = 119
         private var directionModifiers:Point = new Point(0, 0);
         private var walking:Boolean = false;
@@ -33,6 +35,7 @@ package entities
             graphics.beginFill(0xffff00, 1);
             graphics.drawRect(-30, -50, 30, 50);
             graphics.endFill();
+            Debug.trace('init player '+id+' finished');
         }
         
         private function init():void
@@ -43,6 +46,7 @@ package entities
         
         private function startListening(e:Event = null):void
         {
+            Debug.trace(22);
             this.removeEventListener(Event.ADDED_TO_STAGE, startListening);
             stage.addEventListener(KeyboardEvent.KEY_DOWN, manageInput);
             this.addEventListener(Event.ENTER_FRAME, update, false, 0, true);
@@ -59,16 +63,16 @@ package entities
         {//A = 97, S = 115, D = 100, W = 119
             switch(event.keyCode)
             {
-                case 119: //W
+                case 87: //W
                     this.directionModifiers.y = -1;
                     break;
-                case 97:  //A
+                case 65:  //A
                     this.directionModifiers.x = -1;
                     break;
-                case 115: //S
+                case 83: //S
                     this.directionModifiers.y = 1;
                     break;
-                case 100: //D
+                case 68: //D
                     this.directionModifiers.x = 1;
                     break;
             }

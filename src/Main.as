@@ -33,7 +33,10 @@ package
             
             //Player testing
             var player:Player = new Player("1", null);
-            this.addChild(player);
+            player.x = 500;
+            player.y = 500;
+            stage.addChild(player);
+
         }
     }
     
