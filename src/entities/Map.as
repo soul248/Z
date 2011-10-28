@@ -2,9 +2,10 @@ package entities
 {
     import flash.display.MovieClip;
     import flash.display.Sprite;
-    import managers.Enemymanager;
+    import managers.EnemyManager;
     import flash.events.Event;
     import com.hexagonstar.util.debug.Debug;
+    import assets.AssetsManager;
     
     public class Map extends Sprite
     {
@@ -13,7 +14,7 @@ package entities
         
         public function Map()
         {
-            this.background = new MovieClip();
+            this.background = AssetsManager.getAsset("FloorGround");
             this.addChild(background);
         }
         

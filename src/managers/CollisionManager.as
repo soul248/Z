@@ -18,6 +18,11 @@ package managers
             else throw new Error("CollisionManager is a singleton");
         }
         
+        public function init():void
+        {
+            
+        }
+        
         private function update():void
         {
             for(var i:int = 0; i < this.activeProjectiles.length; i++)

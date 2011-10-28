@@ -63,6 +63,8 @@ package entities
         public function update(event:Event = null):void
         {
             var targetPlayer:Player;
+            var destinationX = this.x;
+            var destinationY = this.y;
             switch(this.currentState)
             {
                 case 'chasing':
@@ -73,10 +75,11 @@ package entities
                     }
                     else
                     {
-                        this.currentState = 'chasing';
-                        (chasedPlayer.x > this.x)? this.x+=this.speed : this.x-= this.speed;
-                        
-                        (chasedPlayer.y > this.y)? this.y+=this.speed : this.y-= this.speed;
+            			destinationX = targetPlayer.x;
+            			destinationY = targetPlayer.y;
+
+            			this.x += (destinationX - this.x) / this.speed;
+            			this.y += (destinationY - this.y) / this.speed;
                     }
                     break;
                     
@@ -90,13 +93,16 @@ package entities
                     {
                         this.currentState = 'attacking';
                         //Attack the fucker
-                        attackedPlayer.attacked();
+                        //attackedPlayer.attacked();
                     }
                     break;
             }
             
             //Make the enemy face the player
-            
+            var radians:Number = Math.atan2(destinationY - this.y, destinationX - this.x);
+			var degrees:Number = radians / (Math.PI / 180) + 90;
+			this.rotation = degrees;
         }
+        
     }
 }

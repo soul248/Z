@@ -69,7 +69,7 @@ package managers
         }
         
         public function addPlayer(player:Player):void
-        {
+        44{
             this.players.push(player);
         }
         

@@ -3,10 +3,13 @@ package
     import flash.display.Sprite;
     import flash.events.Event;
     import entities.Player;
+    import entities.Map;
     import menus.MainMenu;
     import com.hexagonstar.util.debug.Debug;
     
     import assets.AssetsManager;
+    import managers.CollisionManager;
+    import managers.EnemyManager;
 
     public class Main extends Sprite
     {
@@ -34,13 +37,15 @@ package
             mainMenu = new MainMenu();
             stage.addChild(mainMenu);
             
-            //Start managers
+            var map:Map = new Map();
+            stage.addChild(map);
             
-            //Player testing
             var player:Player = new Player("1");
             player.x = 500;
             player.y = 500;
             stage.addChild(player);
+            
+            
         }
     }
     
