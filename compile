@@ -1,1 +1,1 @@
-mxmlc -optimize=true -debug -default-background-color=#FFFFFF -default-size 760 600 -static-link-runtime-shared-libraries=true -default-frame-rate=60 -output=Z.swf src/Main.as
+mxmlc -optimize=true -debug -default-background-color=#FFFFFF -default-size 1024 768 -static-link-runtime-shared-libraries=true -default-frame-rate=60 -output=Z.swf src/Main.as
