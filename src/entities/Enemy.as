@@ -21,6 +21,7 @@ package entities
         private var asset:MovieClip;
         private var attackTimer:Timer;
         private var currentState:String = 'chasing';
+        private var hp:int = 100;
         
         public function Enemy(position:Point)
         {
@@ -48,12 +49,24 @@ package entities
             if(this.parent) this.parent.removeChild(this);
         }
 
+        public function collision(projectile:Bullet):void
+        {
+            this.hp -= projectile.getDamage();
+            if(this.hp <= 0) this.die();
+        }
+        
+        private function die():void
+        {
+            EnemyManager.getInstance().killedEnemy(this);
+        }
+
         public function update(event:Event = null):void
         {
+            var targetPlayer:Player;
             switch(this.currentState)
             {
                 case 'chasing':
-                    var chasedPlayer = EnemyManager.getInstance().getChasedPlayer(this);
+                    targetPlayer = EnemyManager.getInstance().getChasedPlayer(this);
                     if(this.hitTest(chasedPlayer))
                     {
                         this.currentState = 'attacking';
@@ -68,7 +81,7 @@ package entities
                     break;
                     
                 case 'attacking':
-                    var attackedPlayer = EnemyManager.getInstance().getChasedPlayer(this);
+                    targetPlayer = EnemyManager.getInstance().getChasedPlayer(this);
                     if(!this.hitTest(attackedPlayer))
                     {
                         this.currentState = 'chasing';

@@ -78,6 +78,7 @@ package managers
             var index:int = this.activeEnemies.indexOf(enemy);
             if(index > -1)
             {
+                CollisionManager.getInstance().removeEnemy(enemy);
                 this.activeEnemies[index].destroy();
                 this.activeEnemies.splice(index, 1);
             }
@@ -86,7 +87,7 @@ package managers
         public function getChasedPlayer(enemy:Enemy):Player
         {
             /*
-            var diff = 10000;
+            var diff = 2000;
             var targetPlayer:Player;
             for(var i:int = 0; i < this.players.length; i++)
             {
