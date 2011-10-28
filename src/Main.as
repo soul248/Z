@@ -6,10 +6,11 @@ package
     import menus.MainMenu;
     import com.hexagonstar.util.debug.Debug;
     
-    
+    import assets.AssetsManager;
+
     public class Main extends Sprite
     {
-        private var mainMenu:MainMenu;
+        private static var mainMenu:MainMenu;
         
         public function Main()
         {
@@ -25,18 +26,21 @@ package
         public function init(event:Event = null):void
         {
             //Entry point for app, start the gui
+            var assets:AssetsManager = new AssetsManager(startGame);
+        }
+        
+        public function startGame():void
+        {
             mainMenu = new MainMenu();
             stage.addChild(mainMenu);
-                        
+            
             //Start managers
             
-            
             //Player testing
-            var player:Player = new Player("1", null);
+            var player:Player = new Player("1");
             player.x = 500;
             player.y = 500;
             stage.addChild(player);
-
         }
     }
     
