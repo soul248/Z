@@ -2,13 +2,14 @@ package
 {
     import flash.display.Sprite;
     import flash.events.Event;
+    import entities.Player;
     //import menus.MainMenu;
     
     public class Main extends Sprite
     {
         //var mainMenu:MainMenu;
         
-        public function Main():void
+        public function Main()
         {
             if(stage) init();
             else this.addEventListener(Event.ADDED_TO_STAGE, init);
@@ -23,6 +24,10 @@ package
                         
             //Start managers
             
+            
+            //Player testing
+            var player:Player = new Player("1", null);
+            this.addChild(player);
         }
     }
     
